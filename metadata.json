@@ -1,0 +1,6 @@
+{
+  "name": "VisionCraft Studios Landing Page",
+  "description": "An elegant, high-fidelity post-production agency landing page for VC Studios, featuring smooth cinematic video layers and interactive production workflows.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
