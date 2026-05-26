@@ -4,10 +4,546 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VC Studios | VisionCraft Studios</title>
+    <!-- Imports of beautiful, high-contrast typography -->
+    <link rel="stylesheet" href="/src/index.css" />
   </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+  <body class="bg-black text-white font-sans selection:bg-sky-500 selection:text-black min-h-screen overflow-x-hidden">
+    
+    <div id="landing-container" class="relative min-h-screen flex flex-col justify-between overflow-hidden">
+      
+      <!-- BACKGROUND OVERLAY VIDEO CONTAINER -->
+      <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <video
+          autoplay
+          loop
+          muted
+          playsinline
+          class="w-full h-full object-cover opacity-50"
+          src="https://res.cloudinary.com/dt6bjjsve/video/upload/v1779812522/kling_20260526_Image_to_Video__6118_0_hhjklv.mp4"
+        ></video>
+        <!-- Intense radial and linear gradient layer overlay for flawless legibility -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.85)_100%)] bg-black/45"></div>
+      </div>
+
+      <!-- VISUALLY ENGAGING SITE STRUCTURE -->
+      <div class="relative z-10 flex flex-col flex-grow justify-between min-h-screen">
+        
+        <!-- HEADER / NAVIGATION PIPELINE -->
+        <header id="app-header" class="relative z-50 w-full bg-black/40 backdrop-blur-md">
+          <div class="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 h-20 flex items-center justify-between">
+            
+            <!-- Logo Section -->
+            <div class="flex items-center gap-10">
+              <div id="nav-logo" class="flex items-center gap-3 cursor-pointer">
+                <img 
+                  id="branding-logo-element"
+                  src="/src/assets/images/vc_studios_logo_1779814462897.png" 
+                  width="44" 
+                  height="44" 
+                  alt="VC Studios Logo" 
+                  class="rounded-xl object-contain shadow-[0_4px_24px_rgba(236,72,153,0.15)] bg-white/5 border border-white/10 hover:border-white/35 transition-all duration-300 select-none"
+                  referrerpolicy="no-referrer"
+                />
+                <span class="font-sans font-light tracking-[0.25em] text-white text-[15px] select-none uppercase">VC Studios</span>
+              </div>
+
+              <!-- Desktop Menu Options -->
+              <nav class="hidden md:flex items-center text-sm font-light tracking-wide text-zinc-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400 mx-4 opacity-80"></span>
+                <button data-nav-target="Services" class="hover:text-white transition-colors duration-200 cursor-pointer relative py-1 group">
+                  Services
+                  <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                </button>
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400 mx-4 opacity-80"></span>
+                <button data-nav-target="Why VC Studios" class="hover:text-white transition-colors duration-200 cursor-pointer relative py-1 group">
+                  Why VC Studios
+                  <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                </button>
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400 mx-4 opacity-80"></span>
+                <button data-nav-target="Partners" class="hover:text-white transition-colors duration-200 cursor-pointer relative py-1 group">
+                  Partners
+                  <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                </button>
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400 mx-4 opacity-80"></span>
+                <button data-nav-target="Contact" class="hover:text-white transition-colors duration-200 cursor-pointer relative py-1 group">
+                  Contact
+                  <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+                </button>
+              </nav>
+            </div>
+
+            <!-- Portal access button -->
+            <div class="hidden md:block">
+              <button id="portal-btn" class="px-6 py-2 rounded-full border border-zinc-200 hover:border-white text-sm font-light text-white hover:bg-white/10 transition-all duration-300 cursor-pointer">
+                Studio Portal
+              </button>
+            </div>
+
+            <!-- Mobile Burger Icon -->
+            <button id="mobile-toggle" class="md:hidden text-zinc-300 hover:text-white p-2 cursor-pointer focus:outline-none" aria-label="Toggle Menu">
+              <!-- Animated Burger Icon -->
+              <svg id="burger-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="4" x2="20" y1="12" y2="12"></line>
+                <line x1="4" x2="20" y1="6" y2="6"></line>
+                <line x1="4" x2="20" y1="18" y2="18"></line>
+              </svg>
+            </button>
+
+          </div>
+
+          <!-- Mobile Drawer Panel (Interactive slide height container) -->
+          <div id="mobile-drawer" class="hidden md:hidden w-full bg-zinc-950 border-b border-zinc-900 overflow-hidden transition-all duration-300 max-h-0">
+            <div class="px-6 py-8 flex flex-col gap-6">
+              <button data-nav-target="Services" class="flex items-center gap-3 text-zinc-300 hover:text-white text-base font-light text-left w-full cursor-pointer">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                Services
+              </button>
+              <button data-nav-target="Why VC Studios" class="flex items-center gap-3 text-zinc-300 hover:text-white text-base font-light text-left w-full cursor-pointer">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                Why VC Studios
+              </button>
+              <button data-nav-target="Partners" class="flex items-center gap-3 text-zinc-300 hover:text-white text-base font-light text-left w-full cursor-pointer">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                Partners
+              </button>
+              <button data-nav-target="Contact" class="flex items-center gap-3 text-zinc-300 hover:text-white text-base font-light text-left w-full cursor-pointer">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                Contact
+              </button>
+              <div class="pt-4 border-t border-zinc-900">
+                <button id="mobile-portal-btn" class="w-full text-center py-3 rounded-full border border-white text-sm text-white font-light bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer">
+                  Studio Portal
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- MAIN DECORATIVE CANVAS -->
+        <main class="flex-grow flex flex-col justify-center">
+          
+          <!-- HERO STAGE PANEL -->
+          <section id="hero" class="relative w-full overflow-hidden bg-transparent text-white py-16 sm:py-24 lg:py-32">
+            <!-- Diffuse decorative glowing matrix -->
+            <div class="absolute inset-0 pointer-events-none opacity-25">
+              <div class="absolute top-[20%] left-[10%] w-[500px] h-[500px] bg-indigo-950/10 rounded-full blur-[140px]"></div>
+              <div class="absolute bottom-[10%] right-[15%] w-[400px] h-[400px] bg-sky-950/10 rounded-full blur-[120px]"></div>
+            </div>
+
+            <div class="max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 relative">
+              <div class="max-w-4xl">
+                
+                <!-- Dynamic Live Badge -->
+                <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8 animate-fade-in">
+                  <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-400"></span>
+                  </span>
+                  <span class="text-[10px] sm:text-[11px] font-mono tracking-widest text-zinc-300 uppercase">
+                    Official Post-Production Partner of 
+                    <a href="http://ffstudios.rf.gd" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 font-medium underline underline-offset-2 transition-all">
+                      Frame Flicker Studios
+                    </a>
+                  </span>
+                </div>
+
+                <!-- Epic Titles -->
+                <h1 class="text-[34px] sm:text-[46px] md:text-[54px] lg:text-[60px] leading-[1.25] font-light tracking-normal text-white mb-10">
+                  <span class="block mb-3 font-light transition-all duration-700">
+                    Elevate the stories you want to tell.
+                  </span>
+                  <span class="block font-light text-zinc-200 transition-all duration-700 delay-200">
+                    Bring your vision to light
+                  </span>
+                </h1>
+
+                <!-- Direct Action Button -->
+                <div>
+                  <button id="hero-cta-btn" class="px-8 py-3 rounded-full bg-[#121A58] hover:bg-[#1c2780] text-sm font-light text-white tracking-wide transition-all duration-300 transform active:scale-95 cursor-pointer shadow-[0_4px_30px_rgba(18,26,88,0.3)] hover:shadow-[0_4px_40px_rgba(18,26,88,0.5)] border border-blue-900/20">
+                    Get in Touch
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- PIPELINE FEATURE PANELS -->
+          <section id="features" class="w-full bg-transparent text-white pb-32 pt-2 px-6 sm:px-10 lg:px-16 xl:px-24">
+            <div class="max-w-[1400px] mx-auto">
+              
+              <!-- Section Header -->
+              <div class="mb-14">
+                <h2 class="text-[25px] sm:text-[28px] md:text-[32px] font-normal tracking-wide text-sky-400">
+                  VisionCraft Advantage
+                </h2>
+              </div>
+
+              <!-- Triple Columns Container -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-x-12 lg:gap-x-16">
+                
+                <!-- CARD 1: Cinematic Grading -->
+                <div data-feature-card="Cinematic Grading" class="group cursor-pointer flex flex-col justify-between h-full p-1 rounded-2xl hover:bg-zinc-950/20 transition-all duration-300">
+                  <div>
+                    <div class="mb-6 flex justify-start items-center">
+                      <!-- Panoramic Concentric Color Circle SVG -->
+                      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="transform hover:scale-105 transition-transform duration-300">
+                        <defs>
+                          <linearGradient id="colorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#f43f5e" />
+                            <stop offset="50%" stop-color="#3b82f6" />
+                            <stop offset="100%" stop-color="#10b981" />
+                          </linearGradient>
+                        </defs>
+                        <circle cx="24" cy="24" r="16" stroke="url(#colorGrad)" stroke-width="2.5" />
+                        <circle cx="24" cy="24" r="10" stroke="url(#colorGrad)" stroke-width="1.5" stroke-dasharray="4 2" />
+                        <path d="M24 4V12M24 36V44M4 24H12M36 24H44" stroke="#ffffff" stroke-width="1.5" opacity="0.6" stroke-linecap="round" />
+                        <polygon points="24,19 28,26 20,26" fill="url(#colorGrad)" />
+                      </svg>
+                    </div>
+                    <h3 class="text-[20px] sm:text-[21px] font-light text-white tracking-wide mb-4 group-hover:text-sky-300 transition-colors duration-300">
+                      Cinematic Grading
+                    </h3>
+                    <p class="text-[14px] sm:text-[15px] leading-relaxed text-zinc-400 font-light font-sans antialiased text-left select-text">
+                      Advanced colorimetry tuning, carefully calibrated for rich emotional resonance and pristine theatrical color grading styles.
+                    </p>
+                  </div>
+                  <div class="mt-6 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+                    <span class="text-xs font-mono text-sky-400 font-light">Explore Pipeline Tech</span>
+                    <span class="text-sky-400 text-xs font-light">→</span>
+                  </div>
+                </div>
+
+                <!-- CARD 2: Invisible VFX -->
+                <div data-feature-card="Invisible VFX" class="group cursor-pointer flex flex-col justify-between h-full p-1 rounded-2xl hover:bg-zinc-950/20 transition-all duration-300">
+                  <div>
+                    <div class="mb-6 flex justify-start items-center">
+                      <!-- Live tracking vector node grid SVG -->
+                      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="transform hover:rotate-6 transition-transform duration-300">
+                        <defs>
+                          <linearGradient id="vfxGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#22d3ee" />
+                            <stop offset="100%" stop-color="#a855f7" />
+                          </linearGradient>
+                        </defs>
+                        <rect x="12" y="12" width="24" height="24" rx="4" stroke="url(#vfxGrad)" stroke-width="2" fill="none" />
+                        <circle cx="24" cy="24" r="4" fill="url(#vfxGrad)" />
+                        <path d="M12 12L20 20M36 12L28 20M12 36L20 28M36 36L28 28" stroke="url(#vfxGrad)" stroke-width="1.5" stroke-dasharray="2 1" />
+                        <path d="M8 16V8H16" stroke="url(#vfxGrad)" stroke-width="2.5" stroke-linecap="round" />
+                        <path d="M40 16V8H32" stroke="url(#vfxGrad)" stroke-width="2.5" stroke-linecap="round" />
+                        <path d="M8 32v8h8" stroke="url(#vfxGrad)" stroke-width="2.5" stroke-linecap="round" />
+                        <path d="M40 32v8H32" stroke="url(#vfxGrad)" stroke-width="2.5" stroke-linecap="round" />
+                      </svg>
+                    </div>
+                    <h3 class="text-[20px] sm:text-[21px] font-light text-white tracking-wide mb-4 group-hover:text-sky-300 transition-colors duration-300">
+                      Invisible VFX
+                    </h3>
+                    <p class="text-[14px] sm:text-[15px] leading-relaxed text-zinc-400 font-light font-sans antialiased text-left select-text">
+                      Photorealistic digital environment design and seamless green screen compositing with uncapped real-time rendering pipelines.
+                    </p>
+                  </div>
+                  <div class="mt-6 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+                    <span class="text-xs font-mono text-sky-400 font-light">Explore Pipeline Tech</span>
+                    <span class="text-sky-400 text-xs font-light">→</span>
+                  </div>
+                </div>
+
+                <!-- CARD 3: Spatial Soundscapes -->
+                <div data-feature-card="Spatial Soundscapes" class="group cursor-pointer flex flex-col justify-between h-full p-1 rounded-2xl hover:bg-zinc-950/20 transition-all duration-300">
+                  <div>
+                    <div class="mb-6 flex justify-start items-center">
+                      <!-- Fluid dynamic acoustic spectrum wave SVG -->
+                      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="transform hover:-translate-y-1 transition-transform duration-300">
+                        <defs>
+                          <linearGradient id="soundGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#f59e0b" />
+                            <stop offset="100%" stop-color="#f43f5e" />
+                          </linearGradient>
+                        </defs>
+                        <path d="M8 24H12M16 24V16M16 24V32M20 24V10M20 24V38M24 24V6M24 24V42M28 24V14M28 24V34M32 24V18M32 24V30M36 24V20M36 24V28M40 24H44" stroke="url(#soundGrad)" stroke-width="2.5" stroke-linecap="round" />
+                        <path d="M4 24C4 13.5 12.5 5 24 5" stroke="url(#soundGrad)" stroke-width="1.5" stroke-linecap="round" opacity="0.3" />
+                        <path d="M44 24C44 34.5 35.5 43 24 43" stroke="url(#soundGrad)" stroke-width="1.5" stroke-linecap="round" opacity="0.3" />
+                      </svg>
+                    </div>
+                    <h3 class="text-[20px] sm:text-[21px] font-light text-white tracking-wide mb-4 group-hover:text-sky-300 transition-colors duration-300">
+                      Spatial Soundscapes
+                    </h3>
+                    <p class="text-[14px] sm:text-[15px] leading-relaxed text-zinc-400 font-light font-sans antialiased text-left select-text">
+                      Dynamic multi-channel sound editing and foley setups, fully mixed in surround sound layouts and cinematic Dolby formats.
+                    </p>
+                  </div>
+                  <div class="mt-6 flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+                    <span class="text-xs font-mono text-sky-400 font-light">Explore Pipeline Tech</span>
+                    <span class="text-sky-400 text-xs font-light">→</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- ANALYTICS PANEL (Workflow & Sync syncs the page limits) -->
+          <section id="analytics" class="w-full bg-transparent text-white pb-40 pt-16 px-6 sm:px-10 lg:px-16 xl:px-24 relative">
+            <div class="max-w-[1400px] mx-auto">
+              <div class="max-w-2xl text-left">
+                
+                <!-- Light Blue Tagline -->
+                <div class="text-[11px] sm:text-[12px] font-mono tracking-[0.2em] text-sky-400 uppercase mb-8">
+                  Pipeline Synchronization
+                </div>
+
+                <!-- Headline -->
+                <h2 class="text-[28px] sm:text-[36px] md:text-[44px] leading-[1.3] font-light text-zinc-100 tracking-tight mb-8">
+                  Helping you connect the cuts. <br class="hidden sm:inline" />
+                  So you can see what your title <br class="hidden sm:inline" />
+                  will look like on the silver screen.
+                </h2>
+
+                <!-- Sub-info description block -->
+                <p class="text-[13px] sm:text-[14px] leading-relaxed text-zinc-400 font-light font-sans max-w-lg select-text">
+                  Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas sed diam eget risus varius blandit sit amet non magna.
+                </p>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- FOOTER CONTAINER -->
+        <footer class="border-t border-zinc-950/40 bg-black/40 backdrop-blur-md py-4 text-center select-none">
+          <p class="text-[11px] font-mono tracking-widest text-zinc-500 hover:text-zinc-400 transition-colors duration-300 uppercase">
+            VisionCraft Studios © 2026 • Official Partner of 
+            <a href="http://ffstudios.rf.gd" target="_blank" rel="noopener noreferrer" class="text-sky-400/90 hover:text-sky-300 font-medium underline underline-offset-1 transition">
+              Frame Flicker Studios
+            </a>
+          </p>
+        </footer>
+
+      </div>
+
+      <!-- MASTER PORTAL OVERLAY MODAL (Initially styled as hidden) -->
+      <div id="modal-portal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        
+        <!-- Backdrop Blur element -->
+        <div id="modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-md cursor-pointer transition-opacity duration-300 opacity-0"></div>
+
+        <!-- Central Window Block -->
+        <div id="modal-window" class="relative w-full max-w-lg bg-zinc-950/80 border border-zinc-900/80 rounded-3xl p-8 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-10 backdrop-blur-2xl transition-all duration-300 transform scale-95 opacity-0">
+          
+          <!-- Dismiss Trigger -->
+          <button id="modal-close-btn" class="absolute top-6 right-6 text-zinc-400 hover:text-white transition-colors duration-200 cursor-pointer p-1.5 hover:bg-white/5 rounded-full" aria-label="Close modal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" x2="6" y1="6" y2="18"></line>
+              <line x1="6" x2="18" y1="6" y2="18"></line>
+            </svg>
+          </button>
+
+          <!-- Inside form fields container -->
+          <div id="modal-body">
+            
+            <!-- Standard Header Brand -->
+            <div class="flex items-center gap-2.5 mb-6">
+              <img 
+                src="/src/assets/images/vc_studios_logo_1779814462897.png" 
+                width="30" 
+                height="30" 
+                alt="VC Studios Logo" 
+                class="rounded-lg object-contain"
+                referrerpolicy="no-referrer"
+              />
+              <span class="text-xs font-mono tracking-[4px] text-sky-400 font-semibold uppercase">VISIONCRAFT</span>
+            </div>
+
+            <!-- SUCCESS LAYOUT -->
+            <div id="modal-success-screen" class="hidden text-center py-8">
+              <div class="flex justify-center mb-6">
+                <div class="w-16 h-16 bg-sky-500/10 rounded-full flex items-center justify-center border border-sky-500/20">
+                  <svg class="text-sky-400 w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <h3 id="success-headline" class="text-2xl font-light text-white tracking-wide mb-2">Verified</h3>
+              <p id="success-message" class="text-zinc-400 text-sm font-light max-w-sm mx-auto">Action completed successfully.</p>
+              <button id="success-close-btn" class="mt-8 px-8 py-3 rounded-full bg-sky-950/40 border border-sky-900/30 hover:bg-sky-950 text-white text-sm font-light tracking-wide transition-all duration-300 w-full">
+                Close Vault
+              </button>
+            </div>
+
+            <!-- ACTIVE FORM SECTION (Forms get mounted dynamically) -->
+            <div id="modal-form-area">
+              
+              <!-- 1. LOGIN PIPELINE VIEW -->
+              <form id="form-login" class="space-y-6 hidden">
+                <div>
+                  <h2 class="text-3xl font-light text-white tracking-wide mb-2">Studio Portal</h2>
+                  <p class="text-zinc-400 text-sm font-light">Access secure client workspaces, review timelines, and download master outputs.</p>
+                </div>
+
+                <div class="space-y-4">
+                  <!-- Email input -->
+                  <div>
+                    <label class="block text-xs font-mono text-zinc-500 uppercase mb-2">Credential Email</label>
+                    <div class="relative">
+                      <input
+                        type="email"
+                        required
+                        placeholder="director@studio.com"
+                        class="w-full bg-zinc-900/50 border border-zinc-800/80 rounded-xl px-4 py-3 pl-11 text-zinc-200 placeholder-zinc-600 text-sm focus:border-zinc-500 focus:outline-none transition-all duration-300"
+                      />
+                      <svg class="absolute left-4 top-3.5 text-zinc-600 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6" /></svg>
+                    </div>
+                  </div>
+
+                  <!-- Password input -->
+                  <div>
+                    <label class="block text-xs font-mono text-zinc-500 uppercase mb-2 font-light">Access Code / Password</label>
+                    <div class="relative">
+                      <input
+                        type="password"
+                        required
+                        placeholder="••••••••••••"
+                        class="w-full bg-zinc-900/50 border border-zinc-800/80 rounded-xl px-4 py-3 pl-11 text-zinc-200 placeholder-zinc-600 text-sm focus:border-zinc-500 focus:outline-none transition-all duration-300"
+                      />
+                      <svg class="absolute left-4 top-3.5 text-zinc-600 w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-between text-xs font-light text-zinc-400">
+                  <label class="flex items-center gap-2 cursor-pointer select-none">
+                    <input type="checkbox" class="accent-sky-500 rounded bg-zinc-900 border-zinc-800" />
+                    <span>Authorize editing workstation key</span>
+                  </label>
+                  <button type="button" class="hover:text-white transition-colors duration-200">Reset code?</button>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full h-12 flex items-center justify-center gap-2 rounded-full bg-white text-zinc-950 hover:bg-zinc-200 transition-all duration-300 font-normal text-sm cursor-pointer"
+                >
+                  <span class="btn-text">Verify Identity</span>
+                  <svg class="btn-arrow w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  <div class="spinner hidden w-5 h-5 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin"></div>
+                </button>
+
+                <div class="flex items-center justify-center gap-2 pt-2 border-t border-zinc-900 text-xs text-zinc-600">
+                  <svg class="text-emerald-500 w-4.5 h-4.5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM12 8v4M12 16h.01"/></svg>
+                  <span>End-to-end encrypted production server guard</span>
+                </div>
+              </form>
+
+              <!-- 2. BOOK STUDIO COLLABORATION VIEW -->
+              <form id="form-contact" class="space-y-5 hidden">
+                <div>
+                  <h2 class="text-3xl font-light text-white tracking-wide mb-2">Book Studio Suite</h2>
+                  <p class="text-zinc-400 text-sm font-light">Launch specialized post-production pipelines for your title drafts.</p>
+                </div>
+
+                <div class="space-y-4">
+                  <!-- Name -->
+                  <div>
+                    <label class="block text-xs font-mono text-zinc-500 uppercase mb-2">Producer / Director Name</label>
+                    <input
+                      id="input-contact-name"
+                      type="text"
+                      required
+                      placeholder="Christopher Nolan"
+                      class="w-full bg-zinc-900/50 border border-zinc-800/80 rounded-xl px-4 py-3 text-zinc-200 placeholder-zinc-600 text-sm focus:border-zinc-500 focus:outline-none transition-all duration-300"
+                    />
+                  </div>
+
+                  <!-- Email -->
+                  <div>
+                    <label class="block text-xs font-mono text-zinc-500 uppercase mb-2 font-light">Official Studio Email</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="creative@flicker.com"
+                      class="w-full bg-zinc-900/50 border border-zinc-800/80 rounded-xl px-4 py-3 text-zinc-200 placeholder-zinc-600 text-sm focus:border-zinc-500 focus:outline-none transition-all duration-300"
+                    />
+                  </div>
+
+                  <!-- Budget selection -->
+                  <div>
+                    <label class="block text-xs font-mono text-zinc-500 uppercase mb-2">Estimated Production Budget</label>
+                    <div class="relative">
+                      <select class="w-full bg-zinc-900 border border-zinc-800/80 rounded-xl px-4 py-3 text-zinc-200 text-sm focus:border-zinc-500 focus:outline-none transition-all duration-300 appearance-none cursor-pointer">
+                        <option>Under $5,000 (Short film / Indie Cut)</option>
+                        <option selected>$5,000 - $20,000 (Music Video / Commercial)</option>
+                        <option>$20,000 - $100,000 (Feature Indie Tier)</option>
+                        <option>$100,000+ (Cinema Title Level)</option>
+                      </select>
+                      <svg class="absolute right-4 top-4.5 text-zinc-500 w-4 h-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                  </div>
+
+                  <!-- specs text area -->
+                  <div>
+                    <label class="block text-xs font-mono text-zinc-500 uppercase mb-2">Video Specs & Creative Directives</label>
+                    <textarea
+                      placeholder="Raw log format, sound targets, frame rate requirements, timeline goals..."
+                      rows="3"
+                      class="w-full bg-zinc-900/50 border border-zinc-800/80 rounded-xl px-4 py-3 text-zinc-200 placeholder-zinc-600 text-sm focus:border-zinc-500 focus:outline-none transition-all duration-300 resize-none"
+                    ></textarea>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  class="w-full h-12 flex items-center justify-center gap-2 rounded-full bg-[#121A58] text-white hover:bg-[#1c2780] border border-blue-900/30 transition-all duration-300 font-light text-sm cursor-pointer shadow-[0_4px_20px_rgba(18,26,88,0.4)]"
+                >
+                  <span class="btn-text">Transmit Collaboration Request</span>
+                  <svg class="btn-arrow w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  <div class="spinner hidden w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                </button>
+              </form>
+
+              <!-- 3. DETAILED SPECS VIEW (LEARN MORE SPECIFICATION) -->
+              <div id="view-learn-more" class="space-y-6 hidden">
+                <div>
+                  <span class="text-xs font-mono text-sky-400 font-semibold tracking-widest uppercase block mb-1">CRAFT PIPELINE SPECIFICATION</span>
+                  <h2 id="learn-more-title" class="text-3xl font-light text-white tracking-wide">Post-Production Design</h2>
+                </div>
+
+                <div class="text-zinc-300 text-sm space-y-4 font-light leading-relaxed">
+                  <p>
+                    We operate an advanced, high-fidelity digital sandbox specializing in cinematic grade composites, dynamic sound design, spatial audio mixes, and precise color science colorimetry.
+                  </p>
+                  <p>
+                    As the <strong class="text-sky-400">Official Post-Production Partner of Frame Flicker Studios (ffstudios.rf.gd)</strong>, we establish unified end-to-end production pipelines. From high-dynamic-range RAW logs to theater-calibrated final master templates, our workflows guarantee strict timeline adherence and elite creative precision.
+                  </p>
+                  <ul class="space-y-2 border-l-2 border-sky-400 pl-4 py-1 text-zinc-400">
+                    <li>• Real-time digital review platform with framewise feedback systems.</li>
+                    <li>• Hardware-calibrated color profiles (Rec. 709, DCI-P3, HDR10+).</li>
+                    <li>• Specialized sound mechanics with Dolby Atmos staging.</li>
+                  </ul>
+                </div>
+
+                <div class="pt-4 border-t border-zinc-900 flex justify-end gap-3">
+                  <button id="learn-more-dismiss-btn" class="px-6 py-2.5 rounded-full border border-zinc-800 text-zinc-400 text-sm hover:text-white hover:bg-white/5 transition-all duration-300 cursor-pointer">
+                    Dismiss
+                  </button>
+                  <button id="learn-more-submit-btn" class="px-6 py-2.5 rounded-full bg-white text-zinc-950 font-normal text-sm hover:bg-zinc-200 transition-all duration-300 cursor-pointer flex items-center justify-center gap-2">
+                    <span class="btn-text">Request capabilities Brochure</span>
+                    <div class="spinner hidden w-4 h-4 border-2 border-zinc-950 border-t-transparent rounded-full animate-spin"></div>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- VANILLA EMITTER CORE LOGIC SCRIPT -->
+    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
-
